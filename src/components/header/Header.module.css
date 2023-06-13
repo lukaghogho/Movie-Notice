@@ -1,0 +1,60 @@
+.box {
+  /* background-color: #f5f6fa; */
+  padding: 3.6rem 2.4rem;
+  margin-bottom: 6rem;
+}
+
+.section {
+  max-width: 140rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #ebebeb;
+  font-size: 2.6rem;
+  cursor: default;
+  user-select: none;
+  cursor: pointer;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-item {
+  display: inline-block;
+  color: #ebebeb;
+  font-size: 1.6rem;
+  text-decoration: none;
+  background-color: inherit;
+  border-radius: 33px;
+  border: none;
+  padding: 1rem 3rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #fff;
+  background-color: #161616;
+}
+
+.sign-up {
+  position: relative;
+  margin-right: 2.4rem;
+  background-color: #b71e25;
+}
+
+.sign-up:hover {
+  background-color: #6e1216;
+}
+
+.active {
+  border-bottom: 2px solid #b71e25;
+}

@@ -1,0 +1,91 @@
+.box {
+  color: #ebebeb;
+  padding: 3.6rem 2.4rem;
+  background-color: rgba(0, 0, 0, 0.568);
+}
+
+.section {
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.img {
+  width: 36rem;
+}
+
+.heading {
+  font-size: 3.6rem;
+}
+
+.desc-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.year {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-bottom: 4.8rem;
+}
+
+.desc {
+  font-size: 1.8rem;
+  /* margin-bottom: 2.4rem; */
+  padding-right: 10rem;
+}
+
+.desc span {
+  overflow: -moz-hidden-unscrollable;
+}
+.desc,
+.country,
+.rating {
+  font-size: 1.6rem;
+  /* margin-bottom: 3.6rem; */
+}
+
+.desc p,
+.country p,
+.rating p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.btn {
+  width: 60%;
+  display: inline-block;
+  color: #ebebeb;
+  font-size: 2.2rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 33px;
+  padding: 1.2rem 3.6rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  background-color: #b71e25;
+}
+
+.btn:hover {
+  background-color: #6e1216;
+}
+
+.favorite {
+  border: 1px solid #ebebeb;
+  background-color: transparent;
+  cursor: default;
+  user-select: none;
+}
+
+.favorite:hover {
+  background-color: inherit;
+}
+
+#icon {
+  margin-right: 6px;
+}

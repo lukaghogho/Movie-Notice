@@ -1,0 +1,48 @@
+.box {
+  height: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: 9.6rem;
+}
+
+.logo {
+  color: rgba(235, 235, 235, 0.4);
+  font-size: 2.6rem;
+  cursor: default;
+  user-select: none;
+  cursor: default;
+  border-bottom: 1px solid rgba(235, 235, 235, 0.4);
+}
+
+.list {
+  max-width: 140rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.6rem;
+  color: rgba(235, 235, 235, 0.4);
+  margin: 0 auto;
+}
+
+.text {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.text:hover {
+  color: rgba(235, 235, 235, 0.7);
+}
+
+.copyright {
+  font-size: 1.2rem;
+  color: rgba(235, 235, 235, 0.2);
+}
+
+.tmdb {
+  width: 8.2rem;
+  opacity: 0.6;
+}
