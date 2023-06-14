@@ -21,7 +21,6 @@
 }
 
 .movie-item {
-  height: 34rem;
   position: relative;
   cursor: pointer;
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);
