@@ -10,7 +10,6 @@ const UserProfile = (props) => {
   const params = useParams();
   const ctx = useContext(UserContext);
   const [modal, setModal] = useState(false);
-  console.log(ctx);
   const optionsShows = {
     method: "GET",
     url: "https://api.themoviedb.org/3/account/19890581/favorite/tv",

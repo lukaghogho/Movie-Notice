@@ -34,6 +34,7 @@ const Search = () => {
       (async function () {
         try {
           const response = await axios.request(options);
+          console.log(response);
           const sortedArr = response.data.results
             .filter(
               (mov) => mov.media_type === "tv" || mov.media_type === "movie"
