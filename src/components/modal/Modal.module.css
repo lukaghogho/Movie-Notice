@@ -15,45 +15,20 @@
   font-size: 2.4rem;
   user-select: none;
   text-align: center;
+  margin-bottom: 2.4rem;
 }
 
 .form {
   max-width: 48rem;
-  display: flex;
-  flex-direction: column;
-  gap: 6.4rem;
   background-color: #ebebeb;
   border-radius: 22px;
   padding: 4.8rem;
 }
 
-.form div {
-  position: relative;
+.inputs-box {
   display: flex;
   flex-direction: column;
-}
-
-.form div label {
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
-  user-select: none;
-}
-
-.form div input {
-  font-size: 2.4rem;
-  border-radius: 16px;
-  border: none;
-  padding: 1.2rem 2.4rem;
-}
-
-.form div input:focus {
-  outline: 1px solid #000;
-}
-
-.forgot {
-  font-size: 1.2rem;
-  margin: 1.2rem;
-  cursor: pointer;
+  gap: 3.6rem;
 }
 
 #icon {
@@ -84,21 +59,16 @@
   background-color: #6e1216;
 }
 
-.error {
-  border: 1px solid #eb2f06 !important;
-  background-color: rgba(255, 0, 0, 0.3) !important;
+.btn:disabled,
+.btn:disabled:hover,
+.btn:disabled:active {
+  user-select: none;
+  color: black;
+  background-color: rgb(54, 54, 54);
 }
 
-.error:focus {
-  outline: 1px solid #eb2f06 !important;
-  background-color: rgba(255, 0, 0, 0.3) !important;
-}
-
-.error-text {
-  position: absolute;
-  bottom: -2rem;
+.auth-error {
+  font-size: 1.4rem;
   color: #eb2f06 !important;
-  font-size: 1.2rem;
-  margin: 6px 1.2rem 1.2rem 1.2rem;
-  transform: translateY(100%);
+  margin-left: 1.2rem;
 }

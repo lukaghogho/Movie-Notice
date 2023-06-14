@@ -15,6 +15,9 @@ const Input = (props) => {
       {props.error && (
         <span className={styles["error-text"]}>{props.errorType}</span>
       )}
+      {props.type === "password" && (
+        <span className={styles.forgot}>Forgot Password?</span>
+      )}
     </div>
   );
 };

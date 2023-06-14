@@ -22,6 +22,12 @@
   -webkit-box-shadow: 0 0 0 30px #fff inset;
 }
 
+.forgot {
+  font-size: 1.4rem;
+  margin: 1.2rem;
+  cursor: pointer;
+}
+
 .error {
   border: 1px solid #eb2f06 !important;
   /* background-color: rgba(255, 0, 0, 0.3) !important; */
@@ -34,7 +40,6 @@
 
 .error-text {
   color: #eb2f06 !important;
-  font-size: 1.2rem;
-  /* margin: 6px 1rem 1.2rem 0; */
-  margin-top: 1rem;
+  font-size: 1.4rem;
+  margin: 1.2rem 0 0 1.2rem;
 }
