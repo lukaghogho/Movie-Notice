@@ -20,7 +20,6 @@ const SearchMovies = (props) => {
                 className={styles.item}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={(e) => {
-                  console.log(mov.id);
                   props.setFocus(false);
                   navigate(`/${mov.media_type}/${mov.id}`);
                 }}

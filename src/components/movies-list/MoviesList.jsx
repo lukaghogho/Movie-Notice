@@ -1,7 +1,7 @@
 import styles from "./MoviesList.module.css";
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import instance from "../api/instance";
 
 const MoviesList = (props) => {
   const [items, setItems] = useState([]);
@@ -12,7 +12,7 @@ const MoviesList = (props) => {
   useEffect(() => {
     (async function () {
       try {
-        const request = await axios.request(props.options);
+        const request = await instance(props.options);
         setItems(
           request.data.results.reduce((acc, cur) => {
             return cur.media_type === "tv" || cur.media_type === "movie"

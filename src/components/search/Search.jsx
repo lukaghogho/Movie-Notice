@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { Fragment, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchMovies from "./search-movies/SearchMovies";
 import styles from "./Search.module.css";
+import instance from "../api/instance";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -15,26 +15,19 @@ const Search = () => {
     clearTimeout(delayTimer);
     delayTimer = setTimeout(() => {
       const movieWord = searchRef.current.value;
-      // SEARCH FETCHING
       const options = {
         method: "GET",
-        url: "https://api.themoviedb.org/3/search/multi",
+        url: "search/multi",
         params: {
           query: `${movieWord}`,
           include_adult: "false",
           language: "en-US",
           page: "1",
         },
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNmEzZjVlMjMyODk5NDFhZTEwOGEwM2Q0MjkxMDcwYiIsInN1YiI6IjY0ODE2YzY3ZTM3NWMwMDBjNTI1ZjZiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kj0XKkgWBc-M36Ggtjn4O_cls4TDFmHFj11xn4fppQ0",
-        },
       };
       (async function () {
         try {
-          const response = await axios.request(options);
-          console.log(response);
+          const response = await instance(options);
           const sortedArr = response.data.results
             .filter(
               (mov) => mov.media_type === "tv" || mov.media_type === "movie"
@@ -52,33 +45,16 @@ const Search = () => {
     setFocus(true);
   };
   const blurHandler = (e) => {
-    // e.stopPropagation();
     e.preventDefault();
-    // searchRef.current.value = "";
-    // setMovies([]);
     setFocus(false);
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
     const movieWord = searchRef.current.value;
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/search/multi",
-      params: {
-        query: movieWord,
-        include_adult: "false",
-        language: "en-US",
-        page: "1",
-      },
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNmEzZjVlMjMyODk5NDFhZTEwOGEwM2Q0MjkxMDcwYiIsInN1YiI6IjY0ODE2YzY3ZTM3NWMwMDBjNTI1ZjZiNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kj0XKkgWBc-M36Ggtjn4O_cls4TDFmHFj11xn4fppQ0",
-      },
-    };
 
     navigate(`/movies-searched/${movieWord}`, { replace: true });
+    setFocus(false);
   };
 
   return (
