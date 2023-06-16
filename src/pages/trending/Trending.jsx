@@ -1,6 +1,7 @@
 import styles from "./Trending.module.css";
 import axios from "axios";
 import MoviesList from "../../components/movies-list/MoviesList";
+import instance from "../../components/api/instance";
 
 const Trending = () => {
   const options = {

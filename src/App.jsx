@@ -11,6 +11,7 @@ import UserProvider from "./components/store/UserProvider";
 import NotFound from "./pages/errors/NotFound";
 import Trending from "./pages/trending/Trending";
 import "./App.css";
+import SignUp from "./pages/sign-up/SignUp";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/favorites" element={<Favorites />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/:type/:movieID" element={<MovieItem />}></Route>
           <Route
             path="/movies-searched/:movieWord"

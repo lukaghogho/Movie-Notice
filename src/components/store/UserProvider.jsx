@@ -7,8 +7,6 @@ const initData = {
   userEmail: "",
   userJoined: "",
   userLast: "",
-  userShows: "",
-  userMovies: "",
 };
 
 const dataReducer = (state, action) => {
@@ -20,8 +18,6 @@ const dataReducer = (state, action) => {
         userEmail: action.userEmail,
         userJoined: action.userJoined,
         userLast: action.userLast,
-        userShows: action.userShows,
-        userMovies: action.userMovies,
       };
     case "LOGOUT":
       console.log("logout ran");
@@ -42,8 +38,6 @@ const UserProvider = (props) => {
         userEmail: item.userEmail,
         userJoined: item.userJoined,
         userLast: item.userLast,
-        userShows: item.userShows,
-        userMovies: item.userMovies,
       });
     } else {
       dispatchData({
@@ -58,8 +52,6 @@ const UserProvider = (props) => {
     userEmail: data.userEmail,
     userJoined: data.userJoined,
     userLast: data.userLast,
-    userShows: data.userShows,
-    userMovies: data.userMovies,
     collector: dataCollector,
   };
 

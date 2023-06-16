@@ -42,7 +42,7 @@ const MoviesList = (props) => {
         <span className={styles.length}>{items.length}</span>
       )}
       <ul className={styles["movies-box"]}>
-        {items.map((mov, arr, i) => {
+        {items.map((mov) => {
           return (
             <li
               onClick={() => {
