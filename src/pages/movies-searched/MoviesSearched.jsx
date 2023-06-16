@@ -35,7 +35,7 @@ const MoviesSearched = (props) => {
         <MoviesList
           options={options}
           heading={`Search Results for "${params.movieWord}"`}
-        ></MoviesList>
+        />
       </div>
     </div>
   );

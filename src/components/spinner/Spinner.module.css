@@ -1,0 +1,25 @@
+.box {
+  height: 75vh;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 46%;
+  left: 46%;
+  padding: 3.6rem;
+  border-radius: 50%;
+  border: 8px solid rgba(183, 30, 38, 0.5);
+  border-top: 8px solid #b71e25;
+  animation: spin 1.6s infinite;
+  overflow: hidden;
+  z-index: 20;
+}

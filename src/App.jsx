@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
@@ -14,6 +14,9 @@ import "./App.css";
 import SignUp from "./pages/sign-up/SignUp";
 
 function App() {
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
   return (
     <UserProvider>
       <Header />

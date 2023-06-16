@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchMovies from "./search-movies/SearchMovies";
 import styles from "./Search.module.css";
-import instance from "../api/instance";
+import instance from "../instance/instance";
 
 const Search = () => {
   const navigate = useNavigate();
