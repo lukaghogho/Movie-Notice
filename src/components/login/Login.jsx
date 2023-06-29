@@ -8,7 +8,7 @@ import AuthErrors from "../store/auth-errors";
 
 import React, { useContext } from "react";
 
-const Login = () => {
+const Login = (props) => {
   const ctx = useContext(UserContext);
   const ctxErrors = useContext(AuthErrors);
   const navigate = useNavigate();
@@ -39,9 +39,11 @@ const Login = () => {
           userJoined: user.metadata.creationTime,
           userLast: user.metadata.lastSignInTime,
         });
+        props.setModal(false);
         navigate(`/user/profile/${user.uid}`);
       });
     } catch (error) {
+      console.error(error);
       setError(error.code.split("/")[0], {
         message: ctxErrors[error.code.split("/")[1]],
       });

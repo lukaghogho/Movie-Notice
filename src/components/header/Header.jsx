@@ -8,16 +8,13 @@ import Search from "../search/Search";
 const Header = () => {
   const ctx = useContext(UserContext);
   const navigate = useNavigate();
-  const [movies, setMovies] = useState();
   const [modal, setModal] = useState(false);
-  const [modalStatus, setModalStatus] = useState();
   const [content, setContent] = useState();
 
   const logoClickHandler = () => {
     navigate("/");
   };
   const modalClickHandler = (e) => {
-    setModalStatus(e.target.innerText);
     setModal(true);
   };
 
@@ -76,50 +73,11 @@ const Header = () => {
                 Trending
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                to="/favorites"
-                className={(isActive) => {
-                  return styles["nav-item"];
-                }}
-              >
-                Favorites
-              </NavLink>
-            </li> */}
-            {ctx.isLoggedIn ? (
-              <li>
-                <button
-                  onClick={profileClickHandler}
-                  className={`${styles["nav-item"]} ${styles["sign-up"]}`}
-                >
-                  My Profile
-                </button>
-              </li>
-            ) : (
-              <Fragment>
-                {" "}
-                <li>
-                  <button
-                    onClick={modalClickHandler}
-                    className={`${styles["nav-item"]} ${styles.modal}`}
-                  >
-                    Login
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={modalClickHandler}
-                    className={`${styles["nav-item"]} ${styles["sign-up"]}`}
-                  >
-                    Sign Up
-                  </button>
-                </li>
-              </Fragment>
-            )}
+            {content}
           </ul>
         </nav>
       </div>
-      {modal && <Modal type={modalStatus} modal={modal} setModal={setModal} />}
+      {modal && <Modal type="login" modal={modal} setModal={setModal} />}
     </header>
   );
 };
