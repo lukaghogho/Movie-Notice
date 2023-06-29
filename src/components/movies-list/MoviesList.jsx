@@ -8,7 +8,9 @@ const MoviesList = (props) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
-  console.log(params);
+  const headingNoResult = params.movieWord
+    ? `"${params.movieWord}"`
+    : props.heading;
   const navigate = useNavigate();
   const date = (info) => new Date(info).getFullYear();
   const rating = (info) => info.toFixed(1);
@@ -49,7 +51,7 @@ const MoviesList = (props) => {
           <h1 className={styles["heading-one"]}>
             {items.length > 0
               ? props.heading
-              : `No results for "${params.movieWord}"`}
+              : `No results for ${headingNoResult}`}
           </h1>
           {props.options.url.includes("favorite") && (
             <span className={styles.length}>{items.length}</span>

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useReducer, Fragment } from "react";
+import React, { useContext, useRef, useReducer } from "react";
 import useAuth from "../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
 import {
@@ -10,6 +10,8 @@ import { auth } from "../../firebase";
 import styles from "./Modal.module.css";
 import UserContext from "../store/user-context";
 import Input from "./input/Input";
+import Logout from "../logout/Logout";
+import Login from "../login/Login";
 
 const initData = {
   email: "",
@@ -147,49 +149,35 @@ const Modal = (props) => {
     // }
   };
 
-  const logoutHandler = async () => {
-    try {
-      const post = await signOut(auth);
-      dispatchData({ type: "LOGOUT" });
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div className={styles.box}>
       {props.type === "Sign Up" || props.type === "Login" ? (
-        <form onSubmit={formSubmitHandler} className={styles.form}>
-          <h2 className={styles.heading}>{props.type}</h2>
-          <div className={styles["inputs-box"]}>
-            <Input
-              name="email"
-              type="email"
-              error={data.emailError}
-              errorType={data.emailErrorType}
-              reff={emailRef}
-            ></Input>
-            <Input
-              name="password"
-              type="password"
-              error={data.passError}
-              errorType={data.passErrorType}
-              reff={passRef}
-            ></Input>
-          </div>
-          {data.authError && (
-            <p className={styles["auth-error"]}>{data.authErrorType}</p>
-          )}
-          <button className={styles.btn}>Continue</button>
-        </form>
+        // <form onSubmit={formSubmitHandler} className={styles.form}>
+        //   <h2 className={styles.heading}>{props.type}</h2>
+        //   <div className={styles["inputs-box"]}>
+        //     <Input
+        //       name="email"
+        //       type="email"
+        //       error={data.emailError}
+        //       errorType={data.emailErrorType}
+        //       reff={emailRef}
+        //     ></Input>
+        //     <Input
+        //       name="password"
+        //       type="password"
+        //       error={data.passError}
+        //       errorType={data.passErrorType}
+        //       reff={passRef}
+        //     ></Input>
+        //   </div>
+        //   {data.authError && (
+        //     <p className={styles["auth-error"]}>{data.authErrorType}</p>
+        //   )}
+        //   <button className={styles.btn}>Continue</button>
+        // </form>
+        <Login />
       ) : (
-        <div className={styles.form}>
-          <h2 className={styles.heading}>Do you want to log out?</h2>
-          <button onClick={logoutHandler} className={styles.btn}>
-            Yes
-          </button>
-        </div>
+        <Logout />
       )}
       <ion-icon
         onClick={() => props.setModal(false)}

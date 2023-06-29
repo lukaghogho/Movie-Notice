@@ -1,6 +1,8 @@
 import styles from "./Input.module.css";
+import { useForm } from "react-hook-form";
 
 const Input = (props) => {
+  const { register } = useForm();
   const name = props.name[0].toUpperCase() + props.name.slice(1);
 
   return (
@@ -12,6 +14,7 @@ const Input = (props) => {
         placeholder={name}
         ref={props.reff}
       />
+      <input {...register(props.name)}></input>
       {props.error && (
         <span className={styles["error-text"]}>{props.errorType}</span>
       )}

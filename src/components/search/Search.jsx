@@ -28,6 +28,7 @@ const Search = () => {
       (async function () {
         try {
           const response = await instance(options);
+          console.log(response);
           const sortedArr = response.data.results
             .filter(
               (mov) => mov.media_type === "tv" || mov.media_type === "movie"
@@ -51,10 +52,10 @@ const Search = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    const movieWord = searchRef.current.value;
-
-    navigate(`/movies-searched/${movieWord}`, { replace: true });
     setFocus(false);
+    searchRef.current.onBlur;
+    const movieWord = searchRef.current.value;
+    navigate(`/movies-searched/${movieWord}`, { replace: true });
   };
 
   return (
