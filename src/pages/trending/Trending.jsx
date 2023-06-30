@@ -4,7 +4,7 @@ import MoviesList from "../../components/movies-list/MoviesList";
 const Trending = () => {
   const options = {
     method: "GET",
-    url: "trending/all/week",
+    url: "trending/tv/week",
   };
 
   return (

@@ -17,10 +17,13 @@ const MoviesList = (props) => {
   useEffect(() => {
     (async function () {
       try {
+        console.log(props.options);
         const request = await instance(props.options);
+        console.log(request.data);
         setItems(
           request.data.results.reduce((acc, cur) => {
-            return cur.media_type === "tv" || cur.media_type === "movie"
+            return cur.media_type === "tv" ||
+              props.heading === "Favorite TV Shows"
               ? (acc = [
                   ...acc,
                   {
@@ -42,6 +45,7 @@ const MoviesList = (props) => {
       }
     })();
   }, [props.options]);
+  console.log(items);
   return (
     <Fragment>
       {isLoading ? (

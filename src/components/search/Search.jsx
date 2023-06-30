@@ -17,7 +17,7 @@ const Search = () => {
       const movieWord = searchRef.current.value;
       const options = {
         method: "GET",
-        url: "search/multi",
+        url: "search/tv",
         params: {
           query: `${movieWord}`,
           include_adult: "false",
@@ -28,12 +28,9 @@ const Search = () => {
       (async function () {
         try {
           const response = await instance(options);
-          console.log(response);
-          const sortedArr = response.data.results
-            .filter(
-              (mov) => mov.media_type === "tv" || mov.media_type === "movie"
-            )
-            .sort((a, b) => b.popularity - a.popularity);
+          const sortedArr = response.data.results.sort(
+            (a, b) => b.popularity - a.popularity
+          );
           setMovies(sortedArr.slice(0, 5));
         } catch (error) {
           console.error(error);

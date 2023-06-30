@@ -24,7 +24,7 @@ const Footer = () => {
       </ul>
       <img className={styles.tmdb} src={tmdb} alt="tmdb" />
       <p className={styles.copyright}>
-        © Copyright by Dzudzu TV. Use for erotic purposes only.
+        © Copyright by Lorem Ipsum. Use for blah blah blah purposes only.
       </p>
     </footer>
   );

@@ -1,7 +1,6 @@
 import styles from "./Reviews.module.css";
 import React from "react";
 import rogan from "../../../assets/rogan.jpg";
-
 import churchill from "../../../assets/churchill.jpg";
 import tarantino from "../../../assets/tarantino.jpg";
 
@@ -15,7 +14,9 @@ const Reviews = () => {
             <img className={styles.img} src={churchill} alt="winston" />
             <div>
               <p className={styles.name}>Winston</p>
-              <span className={styles.text}> Underidoderidoderiododeridoo</span>
+              <span className={styles.text}>
+                It's very useful, simply great!
+              </span>
             </div>
           </li>
           <li className={`${styles.review} ${styles.middle}`}>
@@ -23,18 +24,16 @@ const Reviews = () => {
             <div>
               <p className={styles.name}>Joe</p>
               <span className={styles.text}>
-                {" "}
                 Movie Notice is a BAD MUTHERFUCKER!
               </span>
             </div>
           </li>
           <li className={styles.review}>
-            <img className={styles.img} src={tarantino} alt="rogan" />
+            <img className={styles.img} src={tarantino} alt="quentin" />
             <div>
               <p className={styles.name}>Quentin</p>
               <span className={styles.text}>
-                {" "}
-                Wow, this thing is really cool
+                Wow, this thing is really cool. It lacks feet pics though
               </span>
             </div>
           </li>
