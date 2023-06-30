@@ -9,26 +9,7 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-}
-
-.heading {
-  font-size: 2.4rem;
-  user-select: none;
-  text-align: center;
-  margin-bottom: 3.6rem;
-}
-
-.form {
-  min-width: 120rem;
-  background-color: #ebebeb;
-  border-radius: 22px;
-  padding: 4.8rem;
-}
-
-.inputs-box {
-  display: flex;
-  flex-direction: column;
-  gap: 3.6rem;
+  /* transition: opacity 0.2s; */
 }
 
 #icon {
@@ -38,37 +19,4 @@
   right: 6.4rem;
   font-size: 4.6rem;
   cursor: pointer;
-}
-
-.btn {
-  width: 100%;
-  display: inline-block;
-  color: #ebebeb;
-  font-size: 2.2rem;
-  text-decoration: none;
-  background-color: #b71e25;
-  border-radius: 33px;
-  border: none;
-  padding: 1rem 3rem;
-  margin-top: 3.6rem;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #6e1216;
-}
-
-.btn:disabled,
-.btn:disabled:hover,
-.btn:disabled:active {
-  user-select: none;
-  color: black;
-  background-color: rgb(54, 54, 54);
-}
-
-.auth-error {
-  font-size: 1.4rem;
-  color: #eb2f06 !important;
-  margin-left: 1.2rem;
 }
