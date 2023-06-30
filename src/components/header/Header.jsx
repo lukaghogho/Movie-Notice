@@ -45,12 +45,12 @@ const Header = () => {
             </button>
           </li>
           <li>
-            <button
-              onClick={modalClickHandler}
+            <NavLink
+              to="/signup"
               className={`${styles["nav-item"]} ${styles["sign-up"]}`}
             >
               Sign Up
-            </button>
+            </NavLink>
           </li>
         </Fragment>
       )

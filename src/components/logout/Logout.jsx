@@ -6,12 +6,12 @@ import React, { useContext } from "react";
 import UserContext from "../store/user-context";
 
 const Logout = () => {
-  const ctx = useContext(UserContext);
+  const ctxUser = useContext(UserContext);
   const navigate = useNavigate();
   const logoutHandler = async () => {
     try {
       const post = await signOut(auth);
-      // dispatchData({ type: "LOGOUT" });
+      ctxUser.collector({ type: "LOGOUT" });
       navigate("/");
     } catch (error) {
       console.error(error);

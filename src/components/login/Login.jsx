@@ -9,7 +9,7 @@ import AuthErrors from "../store/auth-errors";
 import React, { useContext } from "react";
 
 const Login = (props) => {
-  const ctx = useContext(UserContext);
+  const ctxUser = useContext(UserContext);
   const ctxErrors = useContext(AuthErrors);
   const navigate = useNavigate();
   const {
@@ -31,7 +31,7 @@ const Login = (props) => {
         data.password
       ).then((userCredential) => {
         const user = userCredential.user;
-        ctx.collector({
+        ctxUser.collector({
           type: "LOGIN",
           isLoggedIn: true,
           userID: user.uid,
