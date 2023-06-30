@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 import UserContext from "./user-context";
 
+const date = (val) =>
+  new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(new Date(val));
+
 const initData = {
   isLoggedIn: false,
   userID: "",
@@ -16,8 +19,8 @@ const dataReducer = (state, action) => {
         isLoggedIn: action.isLoggedIn,
         userID: action.userID,
         userEmail: action.userEmail,
-        userJoined: action.userJoined,
-        userLast: action.userLast,
+        userJoined: date(action.userJoined),
+        userLast: date(action.userLast),
       };
     case "LOGOUT":
       console.log("logout ran");
