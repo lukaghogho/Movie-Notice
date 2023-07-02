@@ -1,0 +1,29 @@
+.box {
+  color: #fff;
+  padding: 3.6rem 2.4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.section {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2.8rem;
+  margin-bottom: 4.8rem;
+}
+
+.list {
+  margin-bottom: 4.8rem;
+}
+.lorem,
+.rule {
+  color: #ebebebe8;
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.lorem {
+  text-indent: 2rem;
+}

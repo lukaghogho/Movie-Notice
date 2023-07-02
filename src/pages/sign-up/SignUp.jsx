@@ -135,6 +135,15 @@ const SignUp = () => {
         </div>
       </div>
       <button className={styles.btn}>Continue</button>
+      <p className={styles.rules}>
+        By pressing Continue, you agree to our{" "}
+        <span
+          className={styles["rules-text"]}
+          onClick={() => navigate("/rules-and-terms-of-use")}
+        >
+          Rules & Terms of use
+        </span>
+      </p>
     </form>
   );
 };

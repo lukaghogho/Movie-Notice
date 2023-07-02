@@ -59,7 +59,7 @@
   color: #eb2f06 !important;
   font-size: 1.4rem;
   margin: 0 1rem;
-  transition: all 0.3s;
+  transition: opacity 0.3s;
 }
 
 .btn {
@@ -73,8 +73,9 @@
   border: none;
   padding: 1rem 3rem;
   margin-top: 3.6rem;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
   cursor: pointer;
+  margin-bottom: 1.4rem;
 }
 
 .btn:hover {
@@ -87,6 +88,23 @@
   user-select: none;
   color: black;
   background-color: rgb(54, 54, 54);
+}
+
+.rules {
+  /* display: inline-block; */
+  color: #ebebeb;
+  font-size: 1.2rem;
+  text-align: start;
+}
+
+.rules-text {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.rules-text:hover {
+  color: #cecece;
 }
 
 .auth-error {

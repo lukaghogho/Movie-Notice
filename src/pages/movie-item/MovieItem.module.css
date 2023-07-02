@@ -57,17 +57,17 @@
 }
 
 .btn {
-  width: 60%;
+  width: 48rem;
   display: inline-block;
   color: #ebebeb;
+  background-color: #b71e25;
   font-size: 2.2rem;
   text-decoration: none;
   border: none;
   border-radius: 33px;
   padding: 1.2rem 3.6rem;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
   cursor: pointer;
-  background-color: #b71e25;
 }
 
 .btn:hover {

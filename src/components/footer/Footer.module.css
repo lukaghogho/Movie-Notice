@@ -30,7 +30,7 @@
 .text {
   font-size: 1.6rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: color 0.3s;
 }
 
 .text:hover {

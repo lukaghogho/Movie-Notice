@@ -12,6 +12,7 @@ import NotFound from "./pages/errors/NotFound";
 import Trending from "./pages/trending/Trending";
 import "./App.css";
 import SignUp from "./pages/sign-up/SignUp";
+import Rules from "./pages/rules/Rules";
 
 function App() {
   useEffect(() => {
@@ -22,16 +23,17 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/:type/:movieID" element={<MovieItem />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/rules-and-terms-of-use" element={<Rules />} />
+          <Route path="/:type/:movieID" element={<MovieItem />} />
           <Route
             path="/movies-searched/:movieWord"
             element={<MoviesSearched />}
-          ></Route>
-          <Route path="/trending" element={<Trending></Trending>}></Route>
-          <Route path="/user/profile/:userID" element={<UserProfile />}></Route>
-          <Route path="/*" element={<NotFound></NotFound>}></Route>
+          />
+          <Route path="/trending" element={<Trending></Trending>} />
+          <Route path="/user/profile/:userID" element={<UserProfile />} />
+          <Route path="/*" element={<NotFound></NotFound>} />
         </Routes>
       </main>
       <Footer />
