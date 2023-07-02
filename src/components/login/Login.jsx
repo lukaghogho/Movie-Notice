@@ -91,10 +91,7 @@ const Login = (props) => {
                 message: "Password should contain at least 8 characters",
               },
             })}
-            onFocus={() => {
-              console.log("errors cleared");
-              clearErrors("auth");
-            }}
+            onFocus={() => clearErrors("auth")}
             className={styles.input}
             type="password"
             placeholder="Password"
