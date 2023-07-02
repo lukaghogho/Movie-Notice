@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBRDazMUlJi00jGeGj6LXnEzNowHWFWpUA",
@@ -13,11 +10,12 @@ const firebaseConfig = {
   messagingSenderId: "129378878873",
   appId: "1:129378878873:web:08be8926fd4c26ec7dbf08",
   measurementId: "G-PP5E9KFFEJ",
+  databaseURL:
+    "https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+export const database = getDatabase(app);
 export default app;

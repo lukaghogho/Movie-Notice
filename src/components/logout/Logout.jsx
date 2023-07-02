@@ -2,16 +2,14 @@ import styles from "./Logout.module.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
-import UserContext from "../store/user-context";
+import React from "react";
 
 const Logout = () => {
-  const ctxUser = useContext(UserContext);
   const navigate = useNavigate();
   const logoutHandler = async () => {
     try {
       const post = await signOut(auth);
-      ctxUser.collector({ type: "LOGOUT" });
+      localStorage.clear();
       navigate("/");
     } catch (error) {
       console.error(error);

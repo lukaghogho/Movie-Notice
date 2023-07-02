@@ -4,8 +4,8 @@ import Reviews from "./reviews/Reviews";
 const Home = () => {
   return (
     <div>
-      <Landing></Landing>
-      <Reviews></Reviews>
+      <Landing />
+      <Reviews />
     </div>
   );
 };

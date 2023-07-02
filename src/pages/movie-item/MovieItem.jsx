@@ -3,43 +3,34 @@ import React, { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../../components/spinner/Spinner";
 import instance from "../../components/instance/instance";
+import axios from "axios";
+import Modal from "../../components/modal/Modal";
 
 const MovieItem = () => {
+  const local = JSON.parse(localStorage.getItem("user"));
   const params = useParams();
   const date = (info) => new Date(info).getFullYear();
   const [isLoading, setIsLoading] = useState(true);
   const [content, setContent] = useState({});
-
+  const [isFavorite, setIsFavorite] = useState();
+  const [modal, setModal] = useState(false);
   const optionsMovie = {
     method: "GET",
-    url: `${params.type}/${+params.movieID}`,
-  };
-
-  const optionsStatus = {
-    method: "GET",
-    url: `${params.type}/${+params.movieID}/account_states`,
-  };
-
-  const optionsPost = {
-    method: "POST",
-    url: "account/19890581/favorite",
-    headers: {
-      "content-type": "application/json",
-    },
-    data: {
-      media_type: params.type,
-      media_id: +params.movieID,
-      favorite: true,
-    },
+    url: `tv/${+params.movieID}`,
   };
 
   useEffect(() => {
     (async function () {
       try {
+        if (local) {
+          const firebaseTest = await axios.get(
+            `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}.json`
+          );
+          setIsFavorite(!firebaseTest.data[params.movieID] === false);
+        }
         const response = await instance(optionsMovie);
-        const responseStatus = await instance(optionsStatus);
         setContent({
-          poster: `https://image.tmdb.org/t/p/original/${response.data.poster_path}`,
+          poster: `https://image.tmdb.org/t/p/original${response.data.poster_path}`,
           title: response.data.title || response.data.name || "N/A",
           year:
             date(response.data.release_date) ||
@@ -51,7 +42,6 @@ const MovieItem = () => {
               .join(", ") || "N/A",
           overview: response.data.overview || "N/A",
           rating: response.data.vote_average.toFixed(1) || "N/A",
-          favorite: responseStatus.data.favorite,
         });
       } catch (error) {
         alert(error);
@@ -62,15 +52,24 @@ const MovieItem = () => {
   }, [params.movieID]);
 
   const addClickHandler = async (e) => {
-    if (e.target.lastChild.data === "Add to Favorites") {
+    if (local) {
       try {
-        const post = await instance(optionsPost);
-        setContent((prev) => {
-          return { ...prev, favorite: true };
-        });
+        const postFirebase = await axios.put(
+          `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}/${params.movieID}.json`,
+          {
+            id: params.movieID,
+            poster_path: content.poster,
+            name: content.title,
+            rating: content.rating,
+            release: content.year,
+          }
+        );
+        setIsFavorite(true);
       } catch (error) {
         console.error(error);
       }
+    } else {
+      setModal(true);
     }
   };
   return (
@@ -96,9 +95,7 @@ const MovieItem = () => {
                   <span>{content.rating}</span>
                 </div>
                 <button
-                  className={`${styles.btn} ${
-                    content.favorite && styles.favorite
-                  }`}
+                  className={`${styles.btn} ${isFavorite && styles.favorite}`}
                 >
                   <div
                     onClick={addClickHandler}
@@ -110,16 +107,15 @@ const MovieItem = () => {
                   >
                     <ion-icon
                       id={styles.icon}
-                      name={content.favorite ? "checkmark-done" : "add"}
+                      name={isFavorite ? "checkmark-done" : "add"}
                     />
-                    {content.favorite
-                      ? "Already in Favorites"
-                      : "Add to Favorites"}
+                    {isFavorite ? "Already in Favorites" : "Add to Favorites"}
                   </div>
                 </button>
               </div>
             </div>
           </div>
+          {modal && <Modal type="login" modal={modal} setModal={setModal} />}
         </div>
       ) : (
         <Spinner />

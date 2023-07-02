@@ -1,40 +1,30 @@
-import styles from "./MoviesList.module.css";
+import styles from "./FavoriteMovies.module.css";
 import React, { useState, useEffect, Fragment } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import instance from "../instance/instance";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Spinner from "../spinner/Spinner";
 
 const MoviesList = (props) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const params = useParams();
-  const headingNoResult = params.movieWord
-    ? `"${params.movieWord}"`
-    : props.heading;
   const navigate = useNavigate();
-  const date = (info) => new Date(info).getFullYear();
   const rating = (info) => info.toFixed(1);
   useEffect(() => {
     (async function () {
       try {
-        const request = await instance(props.options);
+        const request = await axios(
+          `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${props.userID}.json`
+        );
         setItems(
-          request.data.results.reduce((acc, cur) => {
-            return cur.media_type === "tv" ||
-              props.heading === "Favorite TV Shows"
-              ? (acc = [
-                  ...acc,
-                  {
-                    id: cur.id,
-                    name: cur.name || cur.title,
-                    release: date(cur.first_air_date || cur.release_date),
-                    rating: cur.vote_average ? rating(cur.vote_average) : "N/A",
-                    poster: `https://image.tmdb.org/t/p/original/${cur.poster_path}`,
-                    type: props.type || cur.media_type,
-                  },
-                ])
-              : acc;
-          }, [])
+          Object.values(request.data).map((mov) => {
+            return {
+              id: mov.id,
+              name: mov.name,
+              release: mov.release,
+              rating: mov.rating ? rating(+mov.rating) : "N/A",
+              poster: `https://image.tmdb.org/t/p/original/${mov.poster_path}`,
+            };
+          })
         );
       } catch (error) {
         console.error(error);
@@ -42,21 +32,15 @@ const MoviesList = (props) => {
         setIsLoading(false);
       }
     })();
-  }, [props.options]);
+  }, [props.userID]);
   return (
     <Fragment>
       {isLoading ? (
         <Spinner />
       ) : (
         <div className={styles.box}>
-          <h1 className={styles["heading-one"]}>
-            {items.length > 0
-              ? props.heading
-              : `No results for ${headingNoResult}`}
-          </h1>
-          {props.options.url.includes("favorite") && (
-            <span className={styles.length}>{items.length}</span>
-          )}
+          <h1 className={styles["heading-one"]}>{props.heading}</h1>
+          <span className={styles.length}>{items.length}</span>
           <ul className={styles["movies-box"]}>
             {items.map((mov) => {
               return (

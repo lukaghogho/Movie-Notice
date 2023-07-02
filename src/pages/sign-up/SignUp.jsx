@@ -1,17 +1,19 @@
 import styles from "./Signup.module.css";
-import { useSpring, useTransition, animated } from "@react-spring/web";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import AuthErrors from "../../components/store/auth-errors";
-import UserContext from "../../components/store/user-context";
+import axios from "axios";
 
 const SignUp = () => {
-  const ctxUser = useContext(UserContext);
   const ctxErrors = useContext(AuthErrors);
   const navigate = useNavigate();
+  const date = (val) =>
+    new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(
+      new Date(val)
+    );
   const {
     register,
     unregister,
@@ -25,22 +27,38 @@ const SignUp = () => {
     e.preventDefault();
     unregister();
     try {
-      const request = await createUserWithEmailAndPassword(
+      let userID;
+      const requestAuth = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password
       ).then((userCredential) => {
         const user = userCredential.user;
-        ctxUser.collector({
-          type: "LOGIN",
-          isLoggedIn: true,
-          userID: user.uid,
-          userEmail: user.email,
-          userJoined: user.metadata.creationTime,
-          userLast: user.metadata.lastSignInTime,
-        });
-        navigate(`/user/profile/${user.uid}`);
+        userID = user.uid;
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            isLoggedIn: "1",
+            id: user.uid,
+            email: user.email,
+            userJoined: date(user.metadata.creationTime),
+            userLast: date(user.metadata.lastSignInTime),
+          })
+        );
       });
+      const requestUser = await axios.put(
+        `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${userID}/1396.json`,
+        {
+          id: 1396,
+          poster_path:
+            "https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+          name: "Breaking Bad",
+          rating: "8.9",
+          release: 2008,
+        }
+      );
+      console.log(requestUser);
+      navigate(`/user/profile/${userID}`);
     } catch (error) {
       console.error(error);
       setError(error.code.split("/")[0], {

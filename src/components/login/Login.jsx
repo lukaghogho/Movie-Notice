@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../store/user-context";
 import AuthErrors from "../store/auth-errors";
 
 import React, { useContext } from "react";
 
+const date = (val) =>
+  new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(new Date(val));
+
 const Login = (props) => {
-  const ctxUser = useContext(UserContext);
   const ctxErrors = useContext(AuthErrors);
   const navigate = useNavigate();
   const {
@@ -31,15 +32,18 @@ const Login = (props) => {
         data.password
       ).then((userCredential) => {
         const user = userCredential.user;
-        ctxUser.collector({
-          type: "LOGIN",
-          isLoggedIn: true,
-          userID: user.uid,
-          userEmail: user.email,
-          userJoined: user.metadata.creationTime,
-          userLast: user.metadata.lastSignInTime,
-        });
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            isLoggedIn: true,
+            id: user.uid,
+            email: user.email,
+            userJoined: date(user.metadata.creationTime),
+            userLast: date(user.metadata.lastSignInTime),
+          })
+        );
         props.setModal(false);
+
         navigate(`/user/profile/${user.uid}`);
       });
     } catch (error) {
@@ -50,31 +54,22 @@ const Login = (props) => {
     }
   };
 
-  const errorHandler = () => {
-    console.log(errors);
-  };
-
   return (
-    <form
-      onSubmit={handleSubmit(submitHandler, errorHandler)}
-      className={styles.form}
-    >
-      <h2 className={styles.heading}>Log In </h2>
+    <form onSubmit={handleSubmit(submitHandler)} className={styles.form}>
+      <h2 className={styles.heading}>Log In</h2>
       <div className={styles["inputs-box"]}>
         <div>
           <input
             {...register("email", {
               required: "This is required",
               shouldUnregister: true,
-              onChange: (e) => {
-                clearErrors("auth");
-              },
               pattern: {
                 value:
                   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                 message: "Invalid input",
               },
             })}
+            onFocus={() => clearErrors("auth")}
             type="email"
             className={styles.input}
             placeholder="Email"
@@ -91,14 +86,15 @@ const Login = (props) => {
             {...register("password", {
               required: "This is required",
               shouldUnregister: true,
-              onChange: (e) => {
-                clearErrors("auth");
-              },
               minLength: {
                 value: 8,
                 message: "Password should contain at least 8 characters",
               },
             })}
+            onFocus={() => {
+              console.log("errors cleared");
+              clearErrors("auth");
+            }}
             className={styles.input}
             type="password"
             placeholder="Password"

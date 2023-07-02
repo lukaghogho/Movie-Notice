@@ -1,15 +1,13 @@
 import styles from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import React, { useState, useContext, Fragment, useEffect } from "react";
-import UserContext from "../store/user-context";
+import React, { useState, Fragment } from "react";
 import Modal from "../modal/Modal";
 import Search from "../search/Search";
 
 const Header = () => {
-  const ctx = useContext(UserContext);
+  const local = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
-  const [content, setContent] = useState();
 
   const logoClickHandler = () => {
     navigate("/");
@@ -19,43 +17,8 @@ const Header = () => {
   };
 
   const profileClickHandler = (e) => {
-    navigate(`/user/profile/${ctx.userID}`);
+    navigate(`/user/profile/${local.id}`);
   };
-
-  useEffect(() => {
-    setContent(
-      ctx.isLoggedIn ? (
-        <li>
-          <button
-            onClick={profileClickHandler}
-            className={`${styles["nav-item"]} ${styles["sign-up"]}`}
-          >
-            My Profile
-          </button>
-        </li>
-      ) : (
-        <Fragment>
-          {" "}
-          <li>
-            <button
-              onClick={modalClickHandler}
-              className={`${styles["nav-item"]} ${styles.modal}`}
-            >
-              Login
-            </button>
-          </li>
-          <li>
-            <NavLink
-              to="/signup"
-              className={`${styles["nav-item"]} ${styles["sign-up"]}`}
-            >
-              Sign Up
-            </NavLink>
-          </li>
-        </Fragment>
-      )
-    );
-  }, [ctx]);
 
   return (
     <header className={styles.box}>
@@ -73,7 +36,36 @@ const Header = () => {
                 Trending
               </NavLink>
             </li>
-            {content}
+            {local !== null ? (
+              <li>
+                <button
+                  onClick={profileClickHandler}
+                  className={`${styles["nav-item"]} ${styles["sign-up"]}`}
+                >
+                  My Profile
+                </button>
+              </li>
+            ) : (
+              <Fragment>
+                {" "}
+                <li>
+                  <button
+                    onClick={modalClickHandler}
+                    className={`${styles["nav-item"]} ${styles.modal}`}
+                  >
+                    Login
+                  </button>
+                </li>
+                <li>
+                  <NavLink
+                    to="/signup"
+                    className={`${styles["nav-item"]} ${styles["sign-up"]}`}
+                  >
+                    Sign Up
+                  </NavLink>
+                </li>
+              </Fragment>
+            )}
           </ul>
         </nav>
       </div>

@@ -6,6 +6,7 @@
 }
 
 .heading {
+  color: #181818;
   font-size: 2.4rem;
   user-select: none;
   text-align: center;
@@ -47,12 +48,10 @@
 
 .error {
   border: 1px solid #eb2f06 !important;
-  /* background-color: rgba(255, 0, 0, 0.3) !important; */
 }
 
 .error:focus {
   outline: 1px solid #eb2f06 !important;
-  /* background-color: rgba(255, 0, 0, 0.3) !important; */
 }
 
 .error-text {
