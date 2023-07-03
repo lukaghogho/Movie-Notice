@@ -3,12 +3,12 @@ import React, { useState, useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../spinner/Spinner";
+const rating = (info) => info.toFixed(1);
 
 const MoviesList = (props) => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const rating = (info) => info.toFixed(1);
   useEffect(() => {
     (async function () {
       try {

@@ -49,7 +49,7 @@ const SignUp = () => {
       const requestUser = await axios.put(
         `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${userID}/1396.json`,
         {
-          id: 1396,
+          id: "1396",
           poster_path:
             "https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
           name: "Breaking Bad",
