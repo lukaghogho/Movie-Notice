@@ -27,6 +27,7 @@
 }
 
 .nav-item {
+  font-family: inherit;
   display: inline-block;
   color: #ebebeb;
   font-size: 1.6rem;
@@ -40,6 +41,7 @@
 }
 
 .nav-item:hover {
+  font-family: "Geologica", sans-serif;
   color: #fff;
   background-color: #161616;
 }

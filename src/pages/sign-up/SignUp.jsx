@@ -57,7 +57,6 @@ const SignUp = () => {
           release: 2008,
         }
       );
-      console.log(requestUser);
       navigate(`/user/profile/${userID}`);
     } catch (error) {
       setError(error.code.split("/")[0], {
