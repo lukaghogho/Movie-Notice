@@ -16,27 +16,25 @@ Movie Notice is currently hosted live [here](http://movie-notice.web.app). You c
 
 ## Features
 * 🎥 TV Show Selection: Browse and select from a wide range of TV shows.
-
-
 * 🍿 Episode Notifications: Receive notifications whenever a new episode of your selected TV shows is released.
-
-
 * 👪 User Authentication: Sign up and log in to personalize your experience and save your preferences.
 
 
 ## Usage
 To run the application locally, follow these steps:
 
-1. Download the project as a zip file from the GitHub repository.
-2. Extract the contents of the downloaded zip file.
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/lukaghogho/movie-notice.git
+   ```
 3. Install the project dependencies:
 
    
    ```
    npm install
    ```
-5. Start the development server:
-
+4. Start the development server:
    
    ```javascript
    npm run dev
