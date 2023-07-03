@@ -9,7 +9,7 @@ to wait for season finale and then watch all the episodes one after another, but
 So, I decided to develop React application that would be able to offer that service. For me, as a junior front-end 
 web developer, this was a great opportunity to strengthen and further expand my knowledge of HTML, CSS and Javascript (React).
 
-Even though, Movie Notice still lacks some features and developlment process continues, still it's ready to be explored by the world. 
+Even though, Movie Notice still lacks some features and development process continues, still, it is ready to be explored by the world. 
 
 ## Live Server 
 Movie Notice is currently hosted live [here](http://movie-notice.web.app). You can access and use the application directly from there.
