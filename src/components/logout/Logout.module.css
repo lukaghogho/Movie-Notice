@@ -6,13 +6,22 @@
 }
 
 .heading {
+  color: #181818;
   font-size: 2.4rem;
   user-select: none;
   text-align: center;
-  margin-bottom: 3.6rem;
+  margin-bottom: 9.6rem;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .btn {
+  font-family: inherit;
   width: 100%;
   display: inline-block;
   color: #ebebeb;
@@ -22,9 +31,20 @@
   border-radius: 33px;
   border: none;
   padding: 1rem 3rem;
-  margin-top: 3.6rem;
   transition: all 0.3s;
   cursor: pointer;
+}
+
+.btn:first-child {
+  color: #181818;
+  background-color: transparent;
+  border: 2px solid #181818;
+}
+
+.btn:first-child:hover {
+  /* color: #ebebeb; */
+  background-color: #d4d4d4;
+  border: 2px solid transparent;
 }
 
 .btn:hover {

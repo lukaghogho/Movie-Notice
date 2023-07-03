@@ -52,6 +52,7 @@
 }
 
 .logout {
+  font-family: inherit;
   display: inline-block;
   color: #ebebeb;
   font-size: 1.6rem;

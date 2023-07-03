@@ -15,7 +15,13 @@ const Modal = (props) => {
       if (props.type === "login")
         return <Login modal={props.modal} setModal={props.setModal} />;
       else if (props.type === "logout")
-        return <Logout modal={props.modal} setModal={props.setModal} />;
+        return (
+          <Logout
+            modal={props.modal}
+            setModal={props.setModal}
+            closeModal={api}
+          />
+        );
     });
   }, [props.type]);
   return (

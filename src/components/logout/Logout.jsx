@@ -4,13 +4,22 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
-const Logout = () => {
+const Logout = (props) => {
   const navigate = useNavigate();
-  const logoutHandler = async () => {
+  const logoutHandler = async (e) => {
+    const type = e.target.innerHTML;
     try {
-      const post = await signOut(auth);
-      localStorage.clear();
-      navigate("/");
+      if (type === "Yes") {
+        const post = await signOut(auth);
+        localStorage.clear();
+        navigate("/");
+      } else if (type === "No") {
+        props.closeModal.start({
+          from: { opacity: 1 },
+          to: { opacity: 0 },
+        });
+        setTimeout(() => props.setModal(false), 400);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -18,9 +27,21 @@ const Logout = () => {
   return (
     <div className={styles.box}>
       <h2 className={styles.heading}>Do you want to log out?</h2>
+      {/* <button onClick={logoutHandler} className={styles.btn}>
+        No
+      </button>
       <button onClick={logoutHandler} className={styles.btn}>
         Yes
-      </button>
+      </button> */}
+      <div className={styles.btns}>
+        {["No", "Yes"].map((mov, i) => {
+          return (
+            <button key={i} onClick={logoutHandler} className={styles.btn}>
+              {mov}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
