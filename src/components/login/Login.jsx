@@ -47,7 +47,6 @@ const Login = (props) => {
         navigate(`/user/profile/${user.uid}`);
       });
     } catch (error) {
-      console.error(error);
       setError(error.code.split("/")[0], {
         message: ctxErrors[error.code.split("/")[1]],
       });

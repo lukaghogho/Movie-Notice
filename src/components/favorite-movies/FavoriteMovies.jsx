@@ -2,7 +2,7 @@ import styles from "./FavoriteMovies.module.css";
 import React, { useState, useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../UI/spinner/Spinner";
 const rating = (info) => info.toFixed(1);
 
 const MoviesList = (props) => {

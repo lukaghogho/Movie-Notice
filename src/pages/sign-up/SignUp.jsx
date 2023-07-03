@@ -60,7 +60,6 @@ const SignUp = () => {
       console.log(requestUser);
       navigate(`/user/profile/${userID}`);
     } catch (error) {
-      console.error(error);
       setError(error.code.split("/")[0], {
         message: ctxErrors[error.code.split("/")[1]],
       });

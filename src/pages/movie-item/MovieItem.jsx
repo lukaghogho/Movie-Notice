@@ -1,7 +1,7 @@
 import styles from "./MovieItem.module.css";
 import React, { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "../../components/spinner/Spinner";
+import Spinner from "../../components/UI/spinner/Spinner";
 import instance from "../../components/instance/instance";
 import axios from "axios";
 import Modal from "../../components/modal/Modal";

@@ -2,7 +2,7 @@ import styles from "./MoviesList.module.css";
 import React, { useState, useEffect, Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import instance from "../instance/instance";
-import Spinner from "../spinner/Spinner";
+import Spinner from "../UI/spinner/Spinner";
 
 const MoviesList = (props) => {
   const [items, setItems] = useState([]);
