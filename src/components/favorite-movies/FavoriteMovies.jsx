@@ -15,8 +15,12 @@ const MoviesList = (props) => {
         const request = await axios(
           `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${props.userID}.json`
         );
+        const data =
+          Object.values(request.data).length > 0
+            ? Object.values(request.data)
+            : [];
         setItems(
-          Object.values(request.data).map((mov) => {
+          data.map((mov) => {
             return {
               id: mov.id,
               name: mov.name,

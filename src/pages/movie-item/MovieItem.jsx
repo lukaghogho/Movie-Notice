@@ -14,20 +14,21 @@ const MovieItem = () => {
   const [content, setContent] = useState({});
   const [isFavorite, setIsFavorite] = useState();
   const [modal, setModal] = useState(false);
-  const optionsMovie = {
-    method: "GET",
-    url: `tv/${+params.movieID}`,
-  };
 
   useEffect(() => {
     (async function () {
       try {
         if (local) {
-          const firebaseTest = await axios.get(
+          const request = await axios.get(
             `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}.json`
           );
-          setIsFavorite(!firebaseTest.data[params.movieID] === false);
+          if (request.data === null) setIsFavorite(false);
+          else setIsFavorite(!request.data[params.movieID] === false);
         }
+        const optionsMovie = {
+          method: "GET",
+          url: `tv/${+params.movieID}`,
+        };
         const response = await instance(optionsMovie);
         setContent({
           poster: `https://image.tmdb.org/t/p/original${response.data.poster_path}`,
@@ -44,27 +45,33 @@ const MovieItem = () => {
           rating: response.data.vote_average.toFixed(1) || "N/A",
         });
       } catch (error) {
-        alert(error);
+        console.error(error);
       } finally {
         setIsLoading(false);
       }
     })();
   }, [params.movieID]);
 
-  const addClickHandler = async (e) => {
+  const favoriteClickHandler = async (e) => {
     if (local) {
       try {
-        const postFirebase = await axios.put(
-          `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}/${params.movieID}.json`,
-          {
-            id: params.movieID,
-            poster_path: content.poster,
-            name: content.title,
-            rating: content.rating,
-            release: content.year,
-          }
-        );
-        setIsFavorite(true);
+        if (isFavorite) {
+          const request = await axios.delete(
+            `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}/${params.movieID}.json`
+          );
+        } else {
+          const request = await axios.put(
+            `https://movie-notice-default-rtdb.europe-west1.firebasedatabase.app/users/${local.id}/${params.movieID}.json`,
+            {
+              id: params.movieID,
+              poster_path: content.poster,
+              name: content.title,
+              rating: content.rating,
+              release: content.year,
+            }
+          );
+        }
+        setIsFavorite((prev) => !prev);
       } catch (error) {
         console.error(error);
       }
@@ -79,7 +86,14 @@ const MovieItem = () => {
           <div className={styles.section}>
             <img className={styles.img} src={content.poster}></img>
             <div className={styles["text-box"]}>
-              <h2 className={styles.heading}>{content.title}</h2>
+              <h2 className={styles.heading}>
+                {content.title}{" "}
+                <ion-icon
+                  id={styles.icon}
+                  name={`heart${isFavorite ? "-dislike" : ""}-circle-outline`}
+                  onClick={favoriteClickHandler}
+                />
+              </h2>
               <span className={styles.year}>{`(${content.year})`}</span>
               <div className={styles["desc-box"]}>
                 <div className={styles.desc}>
@@ -94,24 +108,6 @@ const MovieItem = () => {
                   <p>Rating</p>
                   <span>{content.rating}</span>
                 </div>
-                <button
-                  className={`${styles.btn} ${isFavorite && styles.favorite}`}
-                >
-                  <div
-                    onClick={addClickHandler}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <ion-icon
-                      id={styles.icon}
-                      name={isFavorite ? "checkmark-done" : "add"}
-                    />
-                    {isFavorite ? "Already in Favorites" : "Add to Favorites"}
-                  </div>
-                </button>
               </div>
             </div>
           </div>
