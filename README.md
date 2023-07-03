@@ -12,7 +12,7 @@ web developer, this was a great opportunity to strengthen and further expand my 
 Even though, Movie Notice still lacks some features and developlment process continues, still it's ready to be explored by the world. 
 
 ## Live Server 
-Movie Notice is currently hosted live [here](movie-notice.web.app). You can access and use the application directly from there.
+Movie Notice is currently hosted live [here](http://movie-notice.web.app). You can access and use the application directly from there.
 
 ## Features
 * 🎥 TV Show Selection: Browse and select from a wide range of TV shows.
