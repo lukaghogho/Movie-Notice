@@ -32,6 +32,7 @@ To run the application locally, follow these steps:
 
    
    ```
+   cd movie-notice
    npm install
    ```
 4. Start the development server:
