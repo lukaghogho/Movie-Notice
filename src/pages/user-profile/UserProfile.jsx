@@ -22,21 +22,25 @@ const UserProfile = (props) => {
               <div>
                 <p className={styles.email}>{local.email}</p>
                 <div className={styles["joined-box"]}>
-                  <p className={styles.joined}>Joined:</p>
-                  <span className={styles["joined-date"]}>
-                    {local.userJoined}
-                  </span>
+                  <div>
+                    <p className={styles.joined}>Joined:</p>
+                    <span className={styles["joined-date"]}>
+                      {local.userJoined}
+                    </span>
+                  </div>
+                  <div>
+                    <p className={styles.joined}>Last Visit:</p>
+                    <span className={styles["joined-date"]}>
+                      {local.userLast}
+                    </span>
+                  </div>
                 </div>
-                <p className={styles.joined}>Last Visit:</p>
-                <span className={styles["joined-date"]}>{local.userLast}</span>
-                {local.isLoggedIn && (
-                  <button
-                    onClick={() => setModal(true)}
-                    className={styles.logout}
-                  >
-                    Log out
-                  </button>
-                )}
+                <button
+                  onClick={() => setModal(true)}
+                  className={styles.logout}
+                >
+                  Log out
+                </button>
               </div>
             </div>
           </div>

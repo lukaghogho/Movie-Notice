@@ -12,7 +12,7 @@ const Footer = () => {
         <li>
           <p className={styles.text}>Pricing</p>
         </li>
-        <li>
+        <li id={styles["li-terms"]}>
           <p className={styles.text}>Terms of Use</p>
         </li>
         <li>

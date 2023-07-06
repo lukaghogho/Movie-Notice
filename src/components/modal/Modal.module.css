@@ -19,3 +19,9 @@
   font-size: 4.6rem;
   cursor: pointer;
 }
+
+@media (max-width: 33.4em) {
+  #icon {
+    right: 2.4rem;
+  }
+}

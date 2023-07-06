@@ -84,32 +84,32 @@ const MovieItem = () => {
       {!isLoading ? (
         <div className={styles.box}>
           <div className={styles.section}>
-            <img className={styles.img} src={content.poster}></img>
-            <div className={styles["text-box"]}>
-              <h2 className={styles.heading}>
-                {content.title}{" "}
-                <ion-icon
-                  id={styles.icon}
-                  name={`heart${isFavorite ? "-dislike" : ""}-circle-outline`}
-                  onClick={favoriteClickHandler}
-                />
-              </h2>
+            <img className={styles.img} src={content.poster} />
+            {/* <div className={styles["text-box"]}> */}
+            <div className={styles["heading-div"]}>
+              <h2 className={styles["heading-two"]}>{content.title} </h2>
               <span className={styles.year}>{`(${content.year})`}</span>
-              <div className={styles["desc-box"]}>
-                <div className={styles.desc}>
-                  <p>Plot</p>
-                  <span>{content.overview}</span>
-                </div>
-                <div className={styles.country}>
-                  <p>Country</p>
-                  <span>{content.country}</span>
-                </div>
-                <div className={styles.rating}>
-                  <p>Rating</p>
-                  <span>{content.rating}</span>
-                </div>
+            </div>
+            <div className={styles["desc-box"]}>
+              <div className={styles.desc}>
+                <h3 className={styles["heading-three"]}>Plot</h3>
+                <span>{content.overview}</span>
+              </div>
+              <div className={styles.country}>
+                <h3 className={styles["heading-three"]}>Country</h3>
+                <span>{content.country}</span>
+              </div>
+              <div className={styles.rating}>
+                <h3 className={styles["heading-three"]}>Rating</h3>
+                <span>{content.rating}</span>
               </div>
             </div>
+            <ion-icon
+              id={styles.icon}
+              name={`heart${isFavorite ? "-dislike" : ""}-circle-outline`}
+              onClick={favoriteClickHandler}
+            />
+            {/* </div> */}
           </div>
           {modal && <Modal type="login" modal={modal} setModal={setModal} />}
         </div>

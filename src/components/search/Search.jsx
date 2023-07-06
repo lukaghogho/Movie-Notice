@@ -60,6 +60,7 @@ const Search = () => {
       <form className={styles.form} onSubmit={formSubmitHandler}>
         <input
           className={styles.input}
+          autoComplete="off"
           name="search"
           type="search"
           placeholder="Search..."

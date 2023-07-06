@@ -19,3 +19,21 @@
   width: 36rem;
   outline: none;
 }
+
+@media (max-width: 67.1em) {
+  .input:focus {
+    width: 26rem;
+  }
+}
+
+@media (max-width: 58.4em) {
+  .input:focus {
+    width: 36rem;
+  }
+}
+
+@media (max-width: 24em) {
+  .input:focus {
+    width: 32rem;
+  }
+}

@@ -16,3 +16,9 @@ body {
   min-height: 100vh;
   background: linear-gradient(75deg, #141414, #313131);
 }
+
+@media (max-width: 38.8em) {
+  html {
+    font-size: 52%;
+  }
+}

@@ -13,7 +13,7 @@
 }
 
 .profile-section {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #ebebeb;
   /* padding: 0 2.4rem; */
 }
@@ -37,7 +37,12 @@
 }
 
 .joined-box {
-  margin-bottom: 6px;
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+.joined-box div:first-child {
+  margin-bottom: 1.2rem;
 }
 
 .joined {
@@ -53,7 +58,7 @@
 
 .logout {
   font-family: inherit;
-  display: inline-block;
+  display: block;
   color: #ebebeb;
   font-size: 1.6rem;
   text-decoration: none;
@@ -63,11 +68,38 @@
   padding: 1rem 3rem;
   transition: all 0.3s;
   cursor: pointer;
-  margin-left: 4.8rem;
+  margin: auto 0;
 }
 
 .logout:hover {
   color: #000;
   border: 1px solid transparent;
   background-color: #ebebeb;
+}
+
+@media (max-width: 33.4em) {
+  .profile-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .img {
+    margin-right: 0;
+    margin-bottom: 3.6rem;
+  }
+
+  .joined-box {
+    display: block;
+    margin-bottom: 3.6rem;
+  }
+
+  .joined {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .logout {
+    display: inline-block;
+    margin-left: 0;
+  }
 }

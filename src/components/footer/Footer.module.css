@@ -6,6 +6,7 @@
   justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 0.7);
   margin-top: 9.6rem;
+  padding: 0 2.4rem;
 }
 
 .logo {
@@ -37,12 +38,52 @@
   color: rgba(235, 235, 235, 0.7);
 }
 
+.tmdb {
+  width: 8.2rem;
+  opacity: 0.6;
+}
+
 .copyright {
   font-size: 1.2rem;
   color: rgba(235, 235, 235, 0.2);
 }
 
-.tmdb {
-  width: 8.2rem;
-  opacity: 0.6;
+@media (max-width: 33.4em) {
+  .list {
+    max-width: 140rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3.6rem;
+    color: rgba(235, 235, 235, 0.4);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #li-terms {
+    grid-column: 1 / span 2;
+    text-align: start;
+  }
+
+  .list li:last-child {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 24em) {
+  .logo {
+    font-size: 2.2rem;
+  }
+  .text {
+    font-size: 1.4rem;
+  }
+
+  .tmdb {
+    width: 7.2rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+  }
 }
