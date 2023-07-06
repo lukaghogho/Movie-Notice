@@ -28,14 +28,17 @@ To run the application locally, follow these steps:
    ```
    git clone https://github.com/lukaghogho/movie-notice.git
    ```
-3. Install the project dependencies:
 
-   
+2. Navigate to the project directory:
    ```
    cd movie-notice
+   ```
+4. Install the project dependencies:
+
+   ```
    npm install
    ```
-4. Start the development server:
+5. Start the development server:
    
    ```javascript
    npm run dev
