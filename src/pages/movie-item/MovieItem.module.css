@@ -1,4 +1,6 @@
 .box {
+  display: flex;
+  justify-content: center;
   color: rgb(235, 235, 235, 0.85);
   padding: 3.6rem 2.4rem;
   background-color: rgba(0, 0, 0, 0.6);
